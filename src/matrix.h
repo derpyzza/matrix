@@ -2,13 +2,6 @@
 
 #include "matrix_types.h"
 
-#ifndef bool
-  typedef enum {
-    false = 0,
-    true = 1
-  } bool;
-#endif
-
 #define MAT_PI 3.14159265358979323846f
 
 #ifndef min
@@ -108,13 +101,13 @@ vec4_u vec4_from_vec3(vec3_u v);
 // === Vector 3 ===
 //
 /** @brief Compares the given vectors for equality */
-bool vec2_is_eq(vec2_u v1, vec2_u v2);
-bool vec2_is_neq(vec2_u v1, vec2_u v2);
+int vec2_is_eq(vec2_u v1, vec2_u v2);
+int vec2_is_neq(vec2_u v1, vec2_u v2);
 /** @brief Compares the given vectors for equality */
-bool vec3_is_eq(vec3_u v1, vec3_u v2);
-bool vec3_is_neq(vec3_u v1, vec3_u v2);
-bool vec4_is_eq(vec4_u v1, vec4_u v2);
-bool vec4_is_neq(vec4_u v1, vec4_u v2);
+int vec3_is_eq(vec3_u v1, vec3_u v2);
+int vec3_is_neq(vec3_u v1, vec3_u v2);
+int vec4_is_eq(vec4_u v1, vec4_u v2);
+int vec4_is_neq(vec4_u v1, vec4_u v2);
 //
 // Basic Arithmetic Operations
 //

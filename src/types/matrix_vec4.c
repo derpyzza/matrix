@@ -16,7 +16,7 @@ vec4_u vec4_from_vec3(vec3_u v)
 	return vec4_new(v.x, v.y, v.z, 1);
 }
 
-bool vec4_is_eq( vec4_u v1, vec4_u v2 )
+int vec4_is_eq( vec4_u v1, vec4_u v2 )
 {
 	return (
 			v1.x == v2.x &&
@@ -26,7 +26,7 @@ bool vec4_is_eq( vec4_u v1, vec4_u v2 )
 	);
 }
 
-bool vec4_is_neq( vec4_u v1, vec4_u v2 )
+int vec4_is_neq( vec4_u v1, vec4_u v2 )
 {
 	return (
 			v1.x != v2.x ||

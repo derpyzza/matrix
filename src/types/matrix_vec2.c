@@ -23,11 +23,11 @@ vec2_u vec2_down(void) {
 
 // Equality checks
 /** @brief Compares the given vectors for equality */
-bool vec2_is_eq( vec2_u v1, vec2_u v2 ) {
+int vec2_is_eq( vec2_u v1, vec2_u v2 ) {
 	return ( v1.x == v2.x && v1.y == v2.y );
 }
 /** @brief Compares the given vectors for equality */
-bool vec2_is_neq( vec2_u v1, vec2_u v2 ) {
+int vec2_is_neq( vec2_u v1, vec2_u v2 ) {
 	return ( v1.x != v2.x || v1.y != v2.y );
 }
 

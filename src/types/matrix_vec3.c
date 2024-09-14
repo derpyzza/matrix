@@ -41,12 +41,12 @@ vec3_u vec3_backward(void)
 	return vec3_new(0, 0, -1);
 }
 
-bool vec3_is_eq( vec3_u v1, vec3_u v2 )
+int vec3_is_eq( vec3_u v1, vec3_u v2 )
 { 
 	return ( v1.x == v2.x && v1.y == v2.y && v1.z == v2.z );
 }
 
-bool vec3_is_neq( vec3_u v1, vec3_u v2 )
+int vec3_is_neq( vec3_u v1, vec3_u v2 )
 { 
 	return ( v1.x != v2.x || v1.y != v2.y || v1.z != v2.z );
 }
