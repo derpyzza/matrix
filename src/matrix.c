@@ -6,12 +6,12 @@ char* matrix_test_func() {
 
 float radians( float angle )
 {
-	return angle * M_PI / 180;
+	return angle * MAT_PI / 180;
 }
 
 float degrees( float angle )
 {
-	return angle * 180 / M_PI;
+	return angle * 180 / MAT_PI;
 }
 
 float clamp( float val, float top, float bottom )

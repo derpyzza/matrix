@@ -9,7 +9,7 @@
   } bool;
 #endif
 
-#define M_PI 3.14159265358979323846f
+#define MAT_PI 3.14159265358979323846f
 
 #ifndef min
 static inline float min(float x, float y) { return (x < y ? x : y); }
