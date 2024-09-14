@@ -1,4 +1,4 @@
-#ifdef MATRIX_DEBUG_FUNCTIONS
+#pragma once
 
 #include "matrix_types.h"
 
@@ -21,5 +21,3 @@ char* mat3_arr_string(float v[9]);
 /* @brief transforms a mat4 into a string version */
 char* mat4_string( mat4_u v);
 char* mat4_arr_string(float v[16]);
-
-#endif

@@ -2,14 +2,15 @@ CC=clang
 SRC=src
 OBJ=obj
 
-CFLAGS :=
+CFLAGS := -Wall -pedantic
 LDFLAGS :=
 
 PROG_NAME = libmatrix
 
 all: $(PROG_NAME)
 
-INCLUDE_FILES = -I$(SRC)/matrix.h -I$(SRC)/matrix_types.h
+INCLUDE_FILES = -I$(SRC)
+# INCLUDE_FILES = -I$(SRC)/matrix.h -I$(SRC)/matrix_types.h
 
 vec2.o: $(SRC)/types/matrix_vec2.c  
 	$(CC) -c $< -o $(OBJ)/$@ $(CFLAGS) $(LDFLAGS) $(INCLUDE_FILES)

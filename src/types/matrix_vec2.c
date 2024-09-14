@@ -2,9 +2,6 @@
 #include <math.h>
 
 // Creation / Initialization
-vec2_u vec2_new(float x, float y) {
-	return (vec2_u){{x, y}};
-}
 vec2_u vec2_zero(void) {
 	return vec2_new(0, 0);
 }
@@ -35,29 +32,28 @@ bool vec2_is_neq( vec2_u v1, vec2_u v2 ) {
 }
 
 vec2_u vec2_add(vec3_u v1, vec3_u v2) {
-	return (vec2_u){{v1.x + v2.x, v1.y + v2.y}};
+	return vec2_new(v1.x + v2.x, v1.y + v2.y);
 }
 vec2_u vec2_sub(vec2_u v1, vec2_u v2) {
-	return (vec2_u){{v1.x - v2.x, v1.y - v2.y}};
+	return vec2_new(v1.x - v2.x, v1.y - v2.y);
 }
 vec2_u vec2_div(vec2_u v1, vec2_u v2) {
-	return (vec2_u){{v1.x / v2.x, v1.y / v2.y}};
+	return vec2_new(v1.x / v2.x, v1.y / v2.y);
 }
 /** @brief returns a vector that is the product of two vectors
  * not at all useful geometrically, but good for when you're using
  * vectors as a three dimensional array;
  */
 vec2_u vec2_mul(vec2_u v1, vec2_u v2) {
-	return (vec2_u){{v1.x * v2.x, v1.y * v2.y}};
+	return vec2_new(v1.x * v2.x, v1.y * v2.y);
 }
 vec2_u vec2_scale(vec3_u vec1, float scalar) {
-	return (vec2_u){{vec1.x * scalar, vec1.y * scalar}};
+	return vec2_new(vec1.x * scalar, vec1.y * scalar);
 }
 vec2_u vec2_neg( vec3_u v ) {
-	return (vec2_u) {{ 
+	return vec2_new(
 		v.x ? v.x * -1 : v.x, 
-		v.y ? v.y * -1 : v.y, 
-	}};
+		v.y ? v.y * -1 : v.y );
 }
 vec2_u vec2_lerp( vec2_u v1, vec2_u v2, float t ) {
 	vec2_u v;
@@ -67,7 +63,7 @@ vec2_u vec2_lerp( vec2_u v1, vec2_u v2, float t ) {
 }
 
 vec2_u vec2_length_squared ( vec2_u v ) {
-	return (vec2_u) {{ v.x * v.x, v.y * v.y }};
+	return vec2_new(v.x * v.x, v.y * v.y);
 }
 
 float vec2_length( vec2_u v ) {

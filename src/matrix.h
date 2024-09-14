@@ -9,7 +9,7 @@
   } bool;
 #endif
 
-#define _PI 3.14159265358979323846f
+#define M_PI 3.14159265358979323846f
 
 #ifndef min
 static inline float min(float x, float y) { return (x < y ? x : y); }
@@ -21,17 +21,52 @@ static inline float max(float x, float y) { return (x > y ? x : y); }
 char* matrix_test_func();
 
 // General math functions
-static inline float radians( float angle ) {
-	return angle * _PI / 180;
+float radians( float angle );
+
+float degrees( float angle );
+
+float clamp( float val, float top, float bottom );
+
+float lerp( float x, float y, float t );
+
+// Data type creation functions
+static inline 
+vec2_u vec2_new(float x, float y)
+{
+	return (vec2_u){{x, y}};
 }
-static inline float degrees( float angle ) {
-	return angle * 180 / _PI;
+
+static inline 
+vec3_u vec3_new(float x, float y, float z)
+{
+	return (vec3_u){{x, y, z}}; 
 }
-static inline float clamp( float val, float top, float bottom ) {
-	return max(bottom, min(val, top));
+
+static inline 
+vec4_u vec4_new(float x, float y, float z, float w)
+{
+	return (vec4_u){{x, y, z, w}};
 }
-static inline float lerp( float x, float y, float t ) {
-	return x + (( y - x ) * t);
+
+static inline 
+mat3_u mat3_new( float data[9] )
+{
+  return (mat3_u) {{
+    data[0],  data[1], data[2],
+    data[3],  data[4], data[5],
+    data[6],  data[6], data[8]
+  }};
+}
+
+static inline
+mat4_u 	mat4_new( float data[16] )
+{
+   return (mat4_u) {{
+		 data[ 0],  data[ 1], data[ 2], data[ 3],
+		 data[ 4],  data[ 5], data[ 6], data[ 7],
+		 data[ 8],  data[ 9], data[10], data[11],
+		 data[12],  data[13], data[14], data[15]
+	 }};
 }
 
 // Vector functions
@@ -39,7 +74,7 @@ static inline float lerp( float x, float y, float t ) {
 //
 // === Vector 2 ===
 //
-vec2_u vec2_new(float x, float y);
+
 vec2_u vec2_zero(void);
 vec2_u vec2_one(void);
 vec2_u vec2_left(void);
@@ -49,7 +84,6 @@ vec2_u vec2_down(void);
 //
 // === Vector 3 ===
 //
-vec3_u vec3_new(float x, float y, float z);
 vec3_u vec3_zero(void);
 vec3_u vec3_one(void);
 /** @brief returns a upward facing vector */
@@ -69,6 +103,7 @@ vec4_u vec4_new(float x, float y, float z, float w);
 vec4_u vec4_zero(void);
 vec4_u vec4_one(void);
 vec4_u vec4_from_vec3(vec3_u v);
+
 // Equality checks
 // === Vector 3 ===
 //
@@ -145,3 +180,7 @@ mat4_u persp(float fov, float near, float far, float ratio);
 mat4_u ortho(float left, float right, float bottom, float top, float near, float far);
 mat4_u look_at(vec3_u pos, vec3_u target, vec3_u up);
 quat quat_id(void);
+
+#ifdef MATRIX_DEBUG_FUNCTIONS
+	#include "matrix_debug/matrix_debug.h"
+#endif
