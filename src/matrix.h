@@ -1,6 +1,9 @@
 #pragma once
 
 #include "matrix_types.h"
+#ifdef MATRIX_DEBUG_FUNCTIONS
+	#include "matrix_debug/matrix_debug.h"
+#endif
 
 #define MAT_PI 3.14159265358979323846f
 
@@ -11,7 +14,7 @@ static inline float min(float x, float y) { return (x < y ? x : y); }
 static inline float max(float x, float y) { return (x > y ? x : y); }
 #endif
 
-char* matrix_test_func();
+char* matrix_test_func(void);
 
 // General math functions
 float radians( float angle );
@@ -111,7 +114,7 @@ int vec4_is_neq(vec4_u v1, vec4_u v2);
 //
 // Basic Arithmetic Operations
 //
-vec2_u vec2_add(vec3_u v1, vec3_u v2);
+vec2_u vec2_add(vec2_u v1, vec2_u v2);
 vec2_u vec2_sub(vec2_u v1, vec2_u v2);
 vec2_u vec2_div(vec2_u v1, vec2_u v2);
 vec2_u vec2_cross(vec2_u v1, vec2_u v2);
@@ -173,7 +176,3 @@ mat4_u persp(float fov, float near, float far, float ratio);
 mat4_u ortho(float left, float right, float bottom, float top, float near, float far);
 mat4_u look_at(vec3_u pos, vec3_u target, vec3_u up);
 quat quat_id(void);
-
-#ifdef MATRIX_DEBUG_FUNCTIONS
-	#include "matrix_debug/matrix_debug.h"
-#endif

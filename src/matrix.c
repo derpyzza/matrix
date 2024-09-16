@@ -1,6 +1,6 @@
 #include "matrix.h"
 
-char* matrix_test_func() {
+char* matrix_test_func(void) {
 	return "Hello there, from matrix!";
 }
 

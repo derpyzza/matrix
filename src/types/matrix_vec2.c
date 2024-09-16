@@ -31,7 +31,7 @@ int vec2_is_neq( vec2_u v1, vec2_u v2 ) {
 	return ( v1.x != v2.x || v1.y != v2.y );
 }
 
-vec2_u vec2_add(vec3_u v1, vec3_u v2) {
+vec2_u vec2_add(vec2_u v1, vec2_u v2) {
 	return vec2_new(v1.x + v2.x, v1.y + v2.y);
 }
 vec2_u vec2_sub(vec2_u v1, vec2_u v2) {
