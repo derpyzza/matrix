@@ -6,8 +6,6 @@
 #define PASS 1
 #define FAIL 0
 
-typedef int (*test_func)(void);
-
 #define ASSERT_TRUE(expr) { \
 	if (expr) {} \
 	else {\
@@ -16,24 +14,26 @@ typedef int (*test_func)(void);
 	} \
 }
 
-#define ASSERT_TRUE_MSG(expr, MSG) { \
-	if (expr) {} \
+#define ASSERT_EQ_T(v1, v2) { \
+	if ( EQ_CHECK(v1, v2) ) {} \
 	else {\
-		printf("[FAIL] {" #expr "} returned false at (%s:%i) with Msg: " MSG "\n", __FILE__, __LINE__); \
+		printf( \
+				"[FAIL] unequal values at (%s:%i)\n" \
+				"Return value: %s\nExpected Value: %s\n", \
+				__FILE__, __LINE__, \
+				V_STRING(v1), V_STRING(v2)); \
 		return FAIL; \
 	} \
 }
 
-#define ASSERT_FALSE(expr) { \
-	if (expr) {\
-		printf("[FAIL] {" #expr "} returned true at (%s:%i)\n", __FILE__, __LINE__); \
-		return FAIL; \
-	} \
-}
-
-#define ASSERT_FALSE_MSG(expr, MSG) { \
-	if (expr) {\
-		printf("[FAIL] {" #expr "} returned true at (%s:%i) with Msg: " MSG "\n", __FILE__, __LINE__); \
+#define ASSERT_NEQ(v1, v2) { \
+	if ( NEQ_CHECK(v1, v2) ) {} \
+	else {\
+		printf( \
+				"[FAIL] equal values at (%s:%i)\n" \
+				"Return value: %s", \
+				__FILE__, __LINE__, \
+				V_STRING(v1)); \
 		return FAIL; \
 	} \
 }
@@ -42,7 +42,6 @@ typedef struct test_results {
 	int passed, failed;
 } test_results;
 
-#define __decl(NAME) test_results suite_ ##NAME (void)
 #define __suite(NAME) test_results suite_ ##NAME (void)
 #define __impl(NAME) int test_ ##NAME (void)
 #define __init(msg) int passed = 0, failed = 0; printf(msg"\n")
@@ -61,8 +60,8 @@ typedef struct test_results {
 	total += (results.passed + results.failed); } 
 #define __results (test_results){passed, failed}
 
-__decl(vec2);
-__decl(vec3);
-__decl(vec4);
-__decl(mat3);
-__decl(mat4);
+__suite(vec2);
+__suite(vec3);
+__suite(vec4);
+__suite(mat3);
+__suite(mat4);

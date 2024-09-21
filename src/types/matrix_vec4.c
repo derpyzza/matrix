@@ -115,7 +115,7 @@ float vec4_length( vec4_u v )
 	);
 }
 
-vec4_u vec4_normalize(vec4_u v)
+vec4_u vec4_normalized(vec4_u v)
 {
 	const float len = vec4_length(v);
 	v.x /= len;
@@ -135,6 +135,19 @@ vec4_u vec4_lerp( vec4_u v1, vec4_u v2, float t )
 	v.w = lerp(v1.w, v2.w, t);
 	return v;
 }
+
+vec4_u vec4_mul_mat4( vec4_u v, mat4_u m )
+{
+	vec4_u vec = vec4_one();
+
+	vec.x = (m.xx * v.x) + (m.xy * v.y) + (m.xz * v.z) + (m.xw * v.w);
+	vec.y = (m.yx * v.x) + (m.yy * v.y) + (m.yz * v.z) + (m.yw * v.w);
+	vec.z = (m.zx * v.x) + (m.zy * v.y) + (m.zz * v.z) + (m.zw * v.w);
+	vec.w = (m.wx * v.x) + (m.wy * v.y) + (m.wz * v.z) + (m.ww * v.w);
+	return vec;
+}
+
+
 
 quat quat_id( void )
 {

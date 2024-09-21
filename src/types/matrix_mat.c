@@ -1,4 +1,5 @@
 #include "../matrix.h"
+#include "matrix_types.h"
 #include <math.h>
 #include <string.h>
 
@@ -36,23 +37,33 @@ mat4_u 	mat4_zero(void)
   );
 }
 
-// mat4_u 	mat4_one(void){
-//   return mat4_new(
-//     1, 1, 1, 1,
-//     1, 1, 1, 1,
-//     1, 1, 1, 1,
-//     1, 1, 1, 1
-//   );
-// }
+mat4_u mat4_float(float val) 
+{
+	mat4_u m;
+	for (int i = 0; i < 16; i++)
+		m.data[i] = val;
+	return m;
+}
+
+mat4_u 	mat4_one(void){
+  return mat4_new(
+		(float[16]){
+    1, 1, 1, 1,
+    1, 1, 1, 1,
+    1, 1, 1, 1,
+    1, 1, 1, 1
+		}
+  );
+}
 
 mat4_u 	mat4_id(void)
 {
 	mat4_u m;
 	memset(&m, 0, sizeof(m));
-	m.x.x = 1;
-	m.y.y = 1;
-	m.z.z = 1;
-	m.w.w = 1;
+	m.xx = 1;
+	m.yy = 1;
+	m.zz = 1;
+	m.ww = 1;
 	return m;
 }
 
@@ -68,12 +79,24 @@ mat4_u mat4_from_vec3s ( vec3_u x, vec3_u y, vec3_u z )
 	);
 }
 
+mat4_u 	mat4_scale_matrix (mat4_u matrix, vec3_u scale)
+{
+	mat4_u m = matrix;
+	m.xx = scale.x;
+	m.yy = scale.y;
+	m.zz = scale.z;
+	return m;
+}
+
 mat4_u 	mat4_scale(mat4_u matrix, vec3_u scale)
 {
 	mat4_u m = matrix;
-	m.x.x *= scale.x;
-	m.y.y *= scale.y;
-	m.z.z *= scale.z;
+	for (int i = 0; i < 3; i++) {
+		int index = (i * 3) + ( i * 1 );
+		m.data[index] *= scale.x;
+		m.data[index+1] *= scale.y;
+		m.data[index+2] *= scale.z;
+	}
 	return m;
 }
 
@@ -99,9 +122,9 @@ mat4_u mat4_mul(mat4_u m1, mat4_u m2)
 
 mat4_u mat4_translate(mat4_u m, vec3_u v)
 {
-	m.w.x += v.x;
-	m.w.y += v.y;
-	m.w.z += v.z;
+	m.wx += v.x;
+	m.wy += v.y;
+	m.wz += v.z;
 	return m;
 }
 
@@ -128,10 +151,10 @@ mat4_u mat4_roty( mat4_u m, float rad )
 		mat4_u rot = mat4_new(
 		(float[16])
 		{
-		cos(rad), sin(rad), 0, 0,
-		0, 1, 0, 0,
-		-sin(rad), cos(rad), 0, 0,
-		0, 0, 0, 1
+		cos(rad), 0, sin(rad), 0,
+		0, 				1, 				0, 0,
+		-sin(rad),0, cos(rad), 0,
+		0, 				0, 				0, 1
 		}
 	);
 	return mat4_mul(m, rot);
@@ -151,9 +174,11 @@ mat4_u mat4_rotz( mat4_u m, float rad )
 	return mat4_mul(m, rot);
 }
 
-mat4_u persp(float fov, float near, float far, float ratio)
+mat4_u persp(float fov_rad, float near, float far, float ratio)
 {
-	return mat4_id();
+	mat4_u out;
+	memset(out.data, 0, sizeof(float) * 16);
+	return out;
 }
 
 mat4_u ortho(float left, float right, float bottom, float top, float near, float far)

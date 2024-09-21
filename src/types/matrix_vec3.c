@@ -104,7 +104,7 @@ float vec3_length( vec3_u v )
 	return sqrtf( v.x * v.x + v.y * v.y + v.z * v.z );
 }
 
-vec3_u vec3_normalize(vec3_u v)
+vec3_u vec3_normalized(vec3_u v)
 {
 	const float len = vec3_length(v);
 	v.x /= len;

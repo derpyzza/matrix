@@ -70,7 +70,7 @@ float vec2_length( vec2_u v ) {
 	return sqrtf( v.x * v.x + v.y * v.y );
 }
 
-vec2_u vec2_normalize(vec2_u v) {
+vec2_u vec2_normalized(vec2_u v) {
 	const float len = vec2_length(v);
 	v.x /= len;
 	v.y /= len;

@@ -14,7 +14,7 @@ $(OBJ):
 INCLUDE_FILES = -Itest.h -I../src/ -I../src/matrix_debug/matrix_debug.h
 
 SRC_FILES := ./test.c
-SRC_FILES += $(addprefix $(SRC)/tests_, vec2.c vec3.c vec4.c mat.c)
+SRC_FILES += $(addprefix $(SRC)/tests_, vec2.c vec3.c vec4.c mat3.c mat4.c)
 OBJ_FILES := $(addprefix $(OBJ)/, $(notdir $(SRC_FILES:.c=.o)))
 
 test: $(PROG_NAME)

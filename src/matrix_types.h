@@ -45,14 +45,34 @@ typedef vec4_u quat;
 
 typedef union mat3_u {
   float data[9];
-  struct {
-    vec3_u x, y, z;
+  union {
+		struct {
+    	float xx, xy, xz;
+    	float yx, yy, yz;
+    	float zx, zy, zz;
+		};
+		struct {
+    	float a, b, c;
+    	float d, e, f;
+    	float g, h, i;
+		};
   };
 } mat3_u;
 
 typedef union mat4_u {
   float data[16];
-  struct {
-    vec4_u x, y, z, w;
+	union {
+		struct {
+			float xx, xy, xz, xw;
+			float yx, yy, yz, yw;
+			float zx, zy, zz, zw;
+			float wx, wy, wz, ww;
+		};
+		struct {
+			float a, b, c, d;
+			float e, f, g, h;
+			float i, j, k, l;
+			float m, n, o, p;
+		};
   };
 } mat4_u;

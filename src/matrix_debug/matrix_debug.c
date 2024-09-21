@@ -9,10 +9,7 @@
 
 char *vec2_string(vec2_u v)
 {
-  char *s = malloc(sizeof(char) * matrix_S_BUF_SIZE);
-  memset(s, 0, sizeof(char) * matrix_S_BUF_SIZE);
-  sprintf(s, "vec2(x: %4.2f, y: %4.2f)", v.x, v.y);
-  return s;
+	return vec2_arr_string(v.data);
 }
 
 char* vec2_arr_string(float v[2])
@@ -25,10 +22,7 @@ char* vec2_arr_string(float v[2])
 
 char *vec3_string(vec3_u v)
 {
-  char *s = malloc(sizeof(char) * matrix_S_BUF_SIZE);
-  memset(s, 0, sizeof(char) * matrix_S_BUF_SIZE);
-  sprintf(s, "vec3(x: %4.2f, y: %4.2f, z: %4.2f)", v.x, v.y, v.z);
-  return s;
+	return vec3_arr_string(v.data);
 }
 
 char* vec3_arr_string(float v[3])
@@ -41,11 +35,7 @@ char* vec3_arr_string(float v[3])
 
 char *vec4_string(vec4_u v)
 {
-  char *s = malloc(sizeof(char) * matrix_S_BUF_SIZE);
-  memset(s, 0, sizeof(char) * matrix_S_BUF_SIZE);
-  sprintf(s, "vec4(x: %4.2f, y: %4.2f, z: %4.2f, w: %4.2f)", v.x, v.y, v.z,
-          v.w);
-  return s;
+	return vec4_arr_string(v.data);
 }
 
 char* vec4_arr_string(float v[4])
@@ -59,15 +49,7 @@ char* vec4_arr_string(float v[4])
 
 char *mat3_string(mat3_u v)
 {
-  char *s = malloc(sizeof(char) * matrix_S_BUF_SIZE);
-  memset(s, 0, sizeof(char) * matrix_S_BUF_SIZE);
-  sprintf(s,
-          "mat3(\n"
-          "  xx: %4.2f, xy: %4.2f, xz: %4.2f,\n"
-          "  yx: %4.2f, yy: %4.2f, yz: %4.2f,\n"
-          "  zx: %4.2f, zy: %4.2f, zz: %4.2f)\n",
-          v.x.x, v.x.y, v.x.z, v.y.x, v.y.y, v.y.z, v.z.x, v.z.y, v.z.z);
-  return s;
+	return mat3_arr_string(v.data);
 }
 
 char* mat3_arr_string(float v[9])
@@ -87,17 +69,7 @@ char* mat3_arr_string(float v[9])
 
 char *mat4_string(mat4_u v) 
 {
-  char *s = malloc(sizeof(char) * matrix_S_BUF_SIZE);
-  memset(s, 0, sizeof(char) * matrix_S_BUF_SIZE);
-  sprintf(s,
-          "mat4(\n"
-          "  xx: %4.2f, xy: %4.2f, xz: %4.2f, xw: %4.2f\n"
-          "  yx: %4.2f, yy: %4.2f, yz: %4.2f, yw: %4.2f\n"
-          "  zx: %04.2f, zy: %4.2f, zz: %4.2f, zw: %4.2f\n"
-          "  wx: %4.2f, wy: %4.2f, wz: %4.2f, ww: %4.2f)",
-          v.x.x, v.x.y, v.x.z, v.x.w, v.y.x, v.y.y, v.y.z, v.y.w, v.z.x, v.z.y,
-          v.z.z, v.z.w, v.w.x, v.w.y, v.w.z, v.w.w);
-  return s;
+	return mat4_arr_string( v.data );
 }
 
 char *mat4_arr_string(float v[16])
