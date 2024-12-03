@@ -5,7 +5,7 @@ PROG_NAME = libmatrix
 
 TEST := test/bin/test
 
-CFLAGS := -Wall -pedantic -g
+CFLAGS := -Wall -pedantic -g --std=c11
 
 all: $(OBJ) debug
 

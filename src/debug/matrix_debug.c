@@ -2,7 +2,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-#include "matrix_debug.h"
+#include "../include/matrix_debug.h"
 
 // 1024 should be plenty
 #define matrix_S_BUF_SIZE 1024
