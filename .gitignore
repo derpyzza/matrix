@@ -1,3 +1,4 @@
 obj/
 libmatrix.a
 test/bin/
+compile_flags.txt

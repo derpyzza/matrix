@@ -1,7 +1,8 @@
 #pragma once
 #include <math.h>
-#include "../matrix_types.h"
 #include <string.h>
+
+#include <matrix/matrix.h>
 
 Mat4
 mat4_from_vec3s ( Vec3 x, Vec3 y, Vec3 z ) {
@@ -16,11 +17,10 @@ mat4_from_vec3s ( Vec3 x, Vec3 y, Vec3 z ) {
 }
 
 Mat4 
-mat4_scale_matrix (Mat4 matrix, Vec3 scale) {
-	Mat4 m = matrix;
-	m.xx = scale.x;
-	m.yy = scale.y;
-	m.zz = scale.z;
+mat4_scale_matrix (Mat4 m, Vec3 scale) {
+	m.data[0][0]  = scale.x;
+	m.data[1][1]  = scale.y;
+	m.data[2][2]  = scale.z;
 	return m;
 }
 

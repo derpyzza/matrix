@@ -1,12 +1,10 @@
 #pragma once
 #include <math.h>
-#include "matrix_types.h"
+#include <matrix/matrix.h>
 
-static inline Vec4 vec4_new (float x, float y, float z, float w) {
-	return (Vec4){x, y, z, w};
-}
+#include "internal.h"
 
-static inline int 
+bool
 vec4_is_eq( Vec4 v1, Vec4 v2 ) {
 	return (
 			v1.x == v2.x &&
@@ -16,7 +14,7 @@ vec4_is_eq( Vec4 v1, Vec4 v2 ) {
 	);
 }
 
-static inline int 
+bool
 vec4_is_neq( Vec4 v1, Vec4 v2 ) {
 	return (
 			v1.x != v2.x ||
@@ -26,7 +24,7 @@ vec4_is_neq( Vec4 v1, Vec4 v2 ) {
 	);
 }
 
-static inline Vec4 
+Vec4 
 vec4_add(Vec4 v1, Vec4 v2) {
 	return vec4_new(
 			v1.x + v2.x,
@@ -35,7 +33,7 @@ vec4_add(Vec4 v1, Vec4 v2) {
 			v1.w + v2.w);
 }
 
-static inline Vec4 
+Vec4 
 vec4_sub(Vec4 v1, Vec4 v2) {
 	return vec4_new(
 			v1.x - v2.x,
@@ -45,7 +43,7 @@ vec4_sub(Vec4 v1, Vec4 v2) {
 			);
 }
 
-static inline Vec4 
+Vec4 
 vec4_mul(Vec4 v1, Vec4 v2) {
 	return vec4_new(
 			v1.x * v2.x,
@@ -55,7 +53,7 @@ vec4_mul(Vec4 v1, Vec4 v2) {
 			);
 }
 
-static inline Vec4 
+Vec4 
 vec4_div(Vec4 v1, Vec4 v2) {
 	return vec4_new(
 			v1.x / v2.x,
@@ -65,7 +63,7 @@ vec4_div(Vec4 v1, Vec4 v2) {
 			);
 }
 
-static inline Vec4 
+Vec4 
 vec4_scale(Vec4 v, float scalar) {
 	return vec4_new(
 			v.x * scalar,
@@ -75,7 +73,7 @@ vec4_scale(Vec4 v, float scalar) {
 }
 
 
-static inline Vec4 
+Vec4 
 vec4_neg( Vec4 v ) {
 	return vec4_new( 
 		v.x ? v.x * -1 : v.x, 
@@ -85,7 +83,7 @@ vec4_neg( Vec4 v ) {
 	);
 }
 
-static inline Vec4 
+Vec4 
 vec4_length_squared ( Vec4 v ) {
 	return vec4_new(
 		v.x * v.x,
@@ -95,7 +93,7 @@ vec4_length_squared ( Vec4 v ) {
 	);
 }
 
-static inline float 
+float 
 vec4_length( Vec4 v ) {
 	return sqrtf( 
 		v.x * v.x
@@ -105,7 +103,7 @@ vec4_length( Vec4 v ) {
 	);
 }
 
-static inline Vec4 
+Vec4 
 vec4_normalized(Vec4 v) {
 	const float len = vec4_length(v);
 	v.x /= len;
@@ -116,7 +114,7 @@ vec4_normalized(Vec4 v) {
 	return v;
 }
 
-static inline Vec4 
+Vec4 
 vec4_lerp( Vec4 v1, Vec4 v2, float t ) {
 	Vec4 v;
 	v.x = lerp(v1.x, v2.x, t);
@@ -126,7 +124,7 @@ vec4_lerp( Vec4 v1, Vec4 v2, float t ) {
 	return v;
 }
 
-static inline Vec4 
+Vec4 
 vec4_mul_mat4( Vec4 v, Mat4 m ) {
 	Vec4 vec = VEC4_ONE;
 	vec.x = (m.data[0][0] * v.x) + (m.data[0][1] * v.y) + (m.data[0][2] * v.z) + (m.data[0][3] * v.w);
