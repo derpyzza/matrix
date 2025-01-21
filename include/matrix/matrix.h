@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef MATRIX_DEBUG_FUNCTIONS
-	#include "matrix_debug.h"
+	#include "matrix_debug/matrix_debug.h"
 #endif
 
 #include "matrix_types.h"

@@ -1,8 +1,6 @@
-#define MATRIX_DEBUG_FUNCTIONS
 #ifdef MATRIX_DEBUG_FUNCTIONS
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <matrix_debug/matrix_debug.h>
 
 // 1024 should be plenty
